@@ -1,4 +1,4 @@
-package dev.java._x.CadastroDeNinjas;
+package dev.java.x.CadastroDeNinjas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
