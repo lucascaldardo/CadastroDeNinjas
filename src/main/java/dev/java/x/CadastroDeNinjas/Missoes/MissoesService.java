@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,8 +32,16 @@ public class MissoesService {
         return missoesPorId.orElse(null);
     }
 
+    public MissoesModel alterarMissaoPorId(@PathVariable Long id, MissoesModel missaoAtualizada){
+        if (missoesRepository.existsById(id)){
+            missaoAtualizada.setId(id);
+        }
+        return null;
+    }
+
     public void deletarMissaoPorId(Long id){
         missoesRepository.deleteById(id);
     }
+
 
 }
