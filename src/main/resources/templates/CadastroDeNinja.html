@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Ninja - Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card-header { background-color: #ff6b00; color: white; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h3>Cadastro de Novo Ninja</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/ninjas/ui/salvar}" th:object="${ninja}" method="post">
+
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome do Ninja</label>
+                            <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Ex: Naruto Uzumaki" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="ninja@konoha.com" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="idade" class="form-label">Idade</label>
+                                <input type="number" th:field="*{idade}" class="form-control" id="idade" min="5" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="rank" class="form-label">Rank</label>
+                                <select th:field="*{rank}" class="form-select" id="rank" required>
+                                    <option value="" selected disabled>Escolha...</option>
+                                    <option value="Genin">Genin</option>
+                                    <option value="Chunin">Chunin</option>
+                                    <option value="Jonin">Jonin</option>
+                                    <option value="Hokage">Hokage</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imgUrl" class="form-label">URL da Imagem (Avatar)</label>
+                            <input type="url" th:field="*{imgUrl}" class="form-control" id="imgUrl" placeholder="https://link-da-foto.jpg">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Cadastrar Ninja</button>
+                            <a th:href="@{/ninjas/ui/listar}" class="btn btn-outline-secondary">Cancelar e Voltar</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
